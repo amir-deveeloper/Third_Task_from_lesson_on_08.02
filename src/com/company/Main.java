@@ -11,37 +11,55 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        int n = scanner.nextInt();
+        String[] str = scanner.nextLine().split(" ");
+        String[] str1 = scanner.nextLine().split(" ");
 
+        int n = Integer.parseInt(str[0]);
+        int d = Integer.parseInt(str[1]);
 
-        String[] names;
+        int[] num = new int[n];
+        int[] rev = new int[d];
+        int j = 0;
 
-        names = new String[n+1];
+        for (int i = 0; i < n; i++){
 
-        for (int i = 0; i < n+1; i++){
-
-            names[i] = scanner.nextLine();
-
-
-        }
-
-        int max = names[0].length();
-        String maximum = "";
-
-        for (int i = 0; i < names.length; i++){
-
-            if (names[i].length() > max){
-
-                max = names[i].length();
-
-                maximum = names[i];
-            }
-
+            num[i] = Integer.parseInt(str1[i]);
 
 
         }
 
-        System.out.println(maximum);
+        for (int i = 0; i < d; i++){
+
+            rev[i] = num[i];
+
+
+        }
+
+
+        for (int i = 0; i < n - d; i++){
+
+            int k = num[i];
+
+            num[i] = num[d+i];
+
+
+        }
+
+        for (int i = n - d; i < n; i++){
+
+            num[i] = rev[j];
+            j++;
+        }
+
+
+
+
+
+
+        System.out.println(java.util.Arrays.toString(num));
+
+
+
 
     }
 }
